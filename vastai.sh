@@ -22,6 +22,7 @@ ZImagePipeline.from_pretrained('Tongyi-MAI/Z-Image-Turbo', torch_dtype=torch.bfl
 print('Model download done.')
 "
 
+
 # 为每张卡启动一个 worker
 GPU_COUNT=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
 
