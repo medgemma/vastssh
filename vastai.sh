@@ -11,12 +11,12 @@ pip install diffusers transformers redis upstash_redis boto3 requests
 curl -H "Authorization: token $GITHUB_TOKEN" \
      -H "Accept: application/vnd.github.v3.raw" \
      -L \
-     -o /gpu_server_autodl_r2.py \
+     -o /workspace/gpu_server_autodl_r2.py \
      "https://api.github.com/repos/ljkrock/vastsh/contents/gpu_server_autodl_r2.py"
      
 # 3. 将你的长期运行服务注册到 supervisor
 echo "[program:gpu-worker]
-command=/venv/main/bin/python /gpu_server_autodl_r2.py
+command=/venv/main/bin/python /workspace/gpu_server_autodl_r2.py
 autostart=true
 autorestart=true" > /etc/supervisor/conf.d/gpu-worker.conf
 
