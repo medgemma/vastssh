@@ -27,12 +27,9 @@ GPU_COUNT=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
 
 for i in $(seq 0 $((GPU_COUNT - 1))); do
   echo "[program:gpu-worker-$i]
-command=/venv/main/bin/python /workspace/gpu_server_autodl_r2.py --gpu $i --pop-direction l
-environment=GPU_INDEX=\"$i\",INSTANCE_ID=\"$INSTANCE_ID\"
+command=/venv/main/bin/python /workspace/gpu_server_autodl_r2.py --gpu $i --pop-direction l --instance-id $INSTANCE_ID
 autostart=true
-autorestart=true
-stdout_logfile=NONE
-stderr_logfile=NONE" > /etc/supervisor/conf.d/gpu-worker-$i.conf
+autorestart=true" > /etc/supervisor/conf.d/gpu-worker-$i.conf
 done
 
 supervisorctl reload
