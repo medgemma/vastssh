@@ -1,4 +1,9 @@
 #!/bin/bash
+echo "===== CHECK ====="
+echo "CONTAINER_ID=$CONTAINER_ID"
+echo "VAST_CONTAINERLABEL=$VAST_CONTAINERLABEL"
+env | grep -E 'VAST|CONTAINER'
+echo "================="
 set -eo pipefail
 
 . /venv/main/bin/activate
